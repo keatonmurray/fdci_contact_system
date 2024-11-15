@@ -14,17 +14,17 @@
                         @csrf
                         <h2 class="mb-4">Let's get your account setup.</h2>
                         <label for="name" class="form-label mt-2">Name</label>
-                        <input type="name" class="form-control line-input mb-2">
+                        <input type="name" name="name" class="form-control line-input mb-2">
                         @error('name')
                             <p class="text-small text-danger">{{$message}}</p>
                         @enderror
                         <label for="" class="form-label mt-2">Email Address</label>
-                        <input type="email" class="form-control line-input mb-2">
+                        <input type="email" name="email" class="form-control line-input mb-2">
                         @error('email')
                             <p class="text-small text-danger">{{$message}}</p>
                         @enderror
                         <label for="" class="form-label">Password</label>
-                        <input type="password" class="form-control line-input mb-3">
+                        <input type="password" name="password" class="form-control line-input mb-3">
                         @error('password')
                             <p class="text-small text-danger">{{$message}}</p>
                         @enderror

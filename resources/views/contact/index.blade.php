@@ -16,8 +16,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                               @if($users)
-                                    @foreach($users as $user)
+                               @if($data['users'])
+                                    @foreach($data['users'] as $user)
                                     <tr>
                                         <td>{{$user->first_name}} {{$user->last_name}}</td>
                                         <td>{{$user->company_name}}</td>

@@ -8,6 +8,8 @@ use App\Http\Controllers\AuthController;
 Route::get('/', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register-user', [AuthController::class, 'register_user'])->name('registration');
+Route::post('/login', [AuthController::class, 'login_user'])->name('login-user');
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/contact/create', [ContactController::class, 'create'])->name('add-contact');

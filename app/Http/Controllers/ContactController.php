@@ -10,11 +10,20 @@ class ContactController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {   
-        $users = Contact::all();
-        return view('contact.index')->with('users', $users);
+    public function index(Request $request)
+    {
+        $term = $request->input('query');
+        $users = $term ? Contact::search($term)->get() : Contact::all();
+    
+        $data = [
+            'term' => $term,
+            'users' => $users
+        ];
+        
+        return view('contact.index')->with('data', $data);
     }
+    
+
 
     /**
      * Show the form for creating a new resource.
@@ -30,15 +39,15 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            // 'first_name' => 'required|max:35',
-            // 'last_name' => 'required|max:35',
-            // 'phone_number' => 'required|numeric|unique:contacts,phone_number|max:15',
-            // 'email_address' => 'required|email|unique:contacts,email_address',
-            // 'company_name' => 'required'
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'phone_number' => 'required',
-            'email_address' => 'required',
+            'first_name' => 'required|max:35',
+            'last_name' => 'required|max:35',
+            'phone_number' => [
+                'required',
+                'regex:/^\+?[0-9]{1,3}[-.\s]?(\(?[0-9]{1,4}\)?[-.\s]?){1,3}[0-9]{1,4}$/',
+                'unique:contacts,phone_number,',
+                'max:18'
+            ],
+            'email_address' => 'required|email|unique:contacts,email_address',
             'company_name' => 'required'
         ]);
     
@@ -71,15 +80,15 @@ class ContactController extends Controller
             $contact = Contact::findOrFail($id); // Will throw a 404 error if the contact is not found
 
         $validatedData = $request->validate([
-            // 'first_name' => 'required|max:35',
-            // 'last_name' => 'required|max:35',
-            // 'phone_number' => 'required|numeric|unique:contacts,phone_number,' . $id . '|max:15',
-            // 'email_address' => 'required|email|unique:contacts,email_address,' . $id,
-            // 'company_name' => 'required'
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'phone_number' => 'required',
-            'email_address' => 'required',
+            'first_name' => 'required|max:35',
+            'last_name' => 'required|max:35',
+           'phone_number' => [
+                'required',
+                'regex:/^\+?[0-9]{1,3}[-.\s]?(\(?[0-9]{1,4}\)?[-.\s]?){1,3}[0-9]{1,4}$/',
+                'unique:contacts,phone_number,' . $id,
+                'max:18'
+            ],
+            'email_address' => 'required|email|unique:contacts,email_address,' . $id,
             'company_name' => 'required'
         ]);
 

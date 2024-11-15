@@ -10,12 +10,19 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
-                    <form action="" method="POST">
+                    <form action="{{route('login-user')}}" method="POST">
+                        @csrf
                         <h2 class="mb-4">Let's get started.</h2>
-                        <label for="" class="form-label mt-2">Email Address</label>
-                        <input type="email" class="form-control line-input mb-2">
-                        <label for="" class="form-label">Password</label>
-                        <input type="password" class="form-control line-input mb-3">
+                        <label for="email" class="form-label mt-2">Email Address</label>
+                        <input type="email" name="email" class="form-control line-input mb-2">
+                        @error('email')
+                            <p class="text-small text-danger">{{$message}}</p>
+                        @enderror
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control line-input mb-3">
+                        @error('password')
+                            <p class="text-small text-danger">{{$message}}</p>
+                        @enderror
                         <div class="d-flex justify-content-between">
                             <p>Don't have an account yet?</p>
                             <a href="{{route('register')}}" class="text-dark">Signup instead</a>
