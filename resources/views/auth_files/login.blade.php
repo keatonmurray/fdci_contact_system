@@ -5,7 +5,7 @@
                 <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
                     <div class="vector-bg">
                         <figure>
-                            <img src="{{asset('images/cactus.png')}}" alt="Cactus Vector Image" class="img-fluid">
+                            <img src="{{asset('images/contact.png')}}" alt="Cactus Vector Image" class="img-fluid">
                         </figure>
                     </div>
                 </div>

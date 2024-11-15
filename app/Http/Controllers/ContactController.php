@@ -86,7 +86,7 @@ class ContactController extends Controller
      */
         public function update(Request $request, string $id)
         {
-            $contact = Contact::findOrFail($id); // Will throw a 404 error if the contact is not found
+        $contact = Contact::findOrFail($id); 
 
         $validatedData = $request->validate([
             'first_name' => 'required|max:35',
