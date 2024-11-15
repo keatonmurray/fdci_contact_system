@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\User;
 
 class Contact extends Model
 {
-    protected $fillable = ['first_name', 'last_name', 'phone_number', 'email_address', 'company_name'];
+    protected $fillable = ['first_name', 'last_name', 'phone_number', 'email_address', 'company_name', 'user_id'];
 
     public function scopeSearch($query, $term)
     {
@@ -26,5 +28,8 @@ class Contact extends Model
         return $query;
     }
     
-
+    public function user() 
+    {
+        return $this->belongsTo(User::class);
+    }
 }

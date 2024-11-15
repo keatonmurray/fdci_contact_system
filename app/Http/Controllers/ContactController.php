@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
@@ -12,16 +13,24 @@ class ContactController extends Controller
      */
     public function index(Request $request)
     {
+        $user = Auth::user();
         $term = $request->input('query');
-        $users = $term ? Contact::search($term)->paginate(6) : Contact::paginate(6);
+        $contactsQuery = $user->contacts();
+    
+        if ($term) {
+            $contactsQuery->search($term);
+        }
+    
+        $contacts = $contactsQuery->paginate(6);
     
         $data = [
             'term' => $term,
-            'users' => $users
+            'users' => $contacts
         ];
     
         return view('contact.index', compact('data'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -46,8 +55,10 @@ class ContactController extends Controller
                 'max:18'
             ],
             'email_address' => 'required|email|unique:contacts,email_address',
-            'company_name' => 'required'
+            'company_name' => 'required',
         ]);
+
+        $data['user_id'] = Auth::id(); 
     
         Contact::create($data);
         return redirect()->route('contact');
