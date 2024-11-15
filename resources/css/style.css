@@ -1,0 +1,106 @@
+* 
+{
+    font-family: "Roboto", serif;
+    font-style: normal;
+}
+
+body 
+{
+    background-color: #fff !important;
+}
+
+#contact header .contact-header-title 
+{
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+#contact ul li a
+{
+    font-weight: 500;
+}
+
+#login
+{
+  margin: 50px 0;
+}
+
+#login form .form-control
+{
+  width: 400px;
+}
+
+#login form .login-button
+{
+  border-radius: 50px !important;
+  padding: 11px;
+  background-color: #000 !important;
+  font-size: 17px;
+}
+
+#login .vector-bg img 
+{
+  height: 525px !important;
+}
+
+.line-input 
+{
+  border: none !important; 
+  border-bottom: 1px solid #adadad !important; 
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  padding: 0.375rem 0 !important; 
+}
+
+.line-input:focus 
+{
+  outline: none !important; 
+  box-shadow: none !important; 
+}
+
+input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+#contact .header-btn {
+    padding: 7px 10px;
+}
+
+#contact #data-table .table-container {
+    max-height: 400px; 
+    overflow-y: auto;
+}
+#contact #data-table .table th {
+    position: sticky;
+    top: 0;
+    background-color: #f7f9fd; 
+    z-index: 1;
+    font-size: 13px;
+    padding: 1.5rem;
+    text-transform: uppercase;
+    color: #727a88;
+}
+
+#contact #data-table .table-container {
+    max-height: 400px; 
+    overflow-y: auto;
+}
+
+#contact #data-table  .table {
+    border-spacing: 0 16px; 
+    border-collapse: separate; 
+}
+
+tbody, td, tfoot, th, thead, tr {
+    border-style: unset !important;
+}
+
+.btn-custom {
+    background-color: #2264e5 !important;
+    color: #fff !important;
+}
+
+.btn-custom:hover {
+    background-color: #1a4db8 !important; 
+}
