@@ -27,13 +27,13 @@
                                             <a href="{{route('edit-contact', ['id' => $user->id])}}" class="btn btn-sm btn-custom">
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                             </a>
-                                           <form action="{{route('delete-contact', ['id' => $user->id])}}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                                <button id="delete" data-id="{{ $user->id }}" class="btn btn-sm btn-danger ms-1">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </button>
-                                           </form>
+                                            <form action="{{ route('delete-contact', ['id' => $user->id]) }}" method="POST" id="delete-form-{{ $user->id }}" style="display:none;">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                            <button class="delete-btn btn btn-sm btn-danger ms-1" data-id="{{ $user->id }}">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                     @endforeach

@@ -1,13 +1,9 @@
 $(document).ready(function(){
-    $('#delete').click(function(event) {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+    $(document).on('click', '.delete-btn', function(event) {
+        event.preventDefault(); 
 
-        event.preventDefault();
         var contactId = $(this).data('id');
+        var formId = '#delete-form-' + contactId; 
 
         Swal.fire({
             title: "Are you sure?",
@@ -19,9 +15,12 @@ $(document).ready(function(){
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
+                var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
                 $.ajax({
-                    url: '/contact' + '/delete/' + contactId, 
-                    type: 'DELETE',
+                    url: $(formId).attr('action'), 
+                    type: 'POST',
+                    data: $(formId).serialize() + '&_token=' + csrfToken,
                     success: function(response) {
                         Swal.fire({
                             title: "Deleted!",
