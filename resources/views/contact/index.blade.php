@@ -30,16 +30,21 @@
                                            <form action="{{route('delete-contact', ['id' => $user->id])}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                                <button class="btn btn-sm btn-danger ms-1">
+                                                <button id="delete" data-id="{{ $user->id }}" class="btn btn-sm btn-danger ms-1">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </button>
                                            </form>
                                         </td>
                                     </tr>
+                                    
                                     @endforeach
                                @endif
                             </tbody>
                         </table>
+                    </div>
+                    <br>
+                    <div class="d-flex float-end">
+                        {{ $data['users']->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
             </div>

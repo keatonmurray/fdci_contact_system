@@ -13,17 +13,15 @@ class ContactController extends Controller
     public function index(Request $request)
     {
         $term = $request->input('query');
-        $users = $term ? Contact::search($term)->get() : Contact::all();
+        $users = $term ? Contact::search($term)->paginate(6) : Contact::paginate(6);
     
         $data = [
             'term' => $term,
             'users' => $users
         ];
-        
-        return view('contact.index')->with('data', $data);
-    }
     
-
+        return view('contact.index', compact('data'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -105,7 +103,6 @@ class ContactController extends Controller
     {
         $contact = Contact::findOrFail($id); 
         $contact->delete();
-    
-        return redirect()->route('contact');
+        
     }
 }
