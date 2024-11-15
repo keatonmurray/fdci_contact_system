@@ -36,7 +36,7 @@
                         <div class="d-flex justify-content-center align-items-center mt-1">
                             <button type="submit" class="btn btn-dark login-button w-100">
                                 <i class="fas fa-sign-in-alt me-2"></i>
-                                Login
+                                Signup
                             </button>
                         </div>
                     </form>
