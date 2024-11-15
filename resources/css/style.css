@@ -97,14 +97,30 @@ tbody, td, tfoot, th, thead, tr {
 }
 
 .btn-custom {
-    background-color: #2264e5 !important;
+    background-color: #000 !important;
     color: #fff !important;
 }
 
 .btn-custom:hover {
-    background-color: #1a4db8 !important; 
+    background-color: #303030 !important; 
 }
 
 .pagination {
     margin: 0 1rem 0 0.5rem;
+}
+
+.pagination .page-item .page-link {
+    background-color: #ffffff; 
+    color: rgb(0, 0, 0); 
+}
+
+.pagination .page-item .page-link:hover {
+    background-color: #303030;  
+    color: white;  
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #000000;
+    color: white;
+    border: 0;
 }

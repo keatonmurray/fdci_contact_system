@@ -31,7 +31,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
-                                            <button class="delete-btn btn btn-sm btn-danger ms-1" data-id="{{ $user->id }}">
+                                            <button class="delete-btn btn btn-sm btn-custom ms-1" data-id="{{ $user->id }}">
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
                                         </td>
@@ -41,8 +41,8 @@
                             </tbody>
                         </table>
                     </div>
-                    <br>
-                    <div class="d-flex float-end">
+                    <br><br>
+                    <div class="d-flex justify-content-end align-items-center h-100">
                         {{ $data['users']->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
